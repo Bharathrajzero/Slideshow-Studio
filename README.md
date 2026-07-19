@@ -97,6 +97,68 @@ src/
 └── utils/              # File system helpers and IndexedDB model caching
 
 ```
+```
+Slideshow-Studio/
+├── public/
+│   └── ffmpeg-core/                     # Self-hosted ffmpeg-core.wasm + .js
+│
+├── src/
+│   ├── assets/
+│   │   └── styles.css
+│   │
+│   ├── components/
+│   │   ├── ImageUploader.tsx            # Drag/drop & manual reordering
+│   │   ├── PromptInput.tsx              # Text prompt box (only shown if generation mode enabled)
+│   │   ├── GeneratedGallery.tsx         # Shows generated frames, pick/reorder/regenerate
+│   │   ├── VideoPlayer.tsx              # Preview output
+│   │   ├── ExportControls.tsx           # Progress bar, render trigger, quality options
+│   │   ├── DeviceWarningBanner.tsx      # "AI generation unavailable on this device" notice
+│   │   └── ModelLoadOverlay.tsx         # First-run loading UI (only relevant if local model used)
+│   │
+│   ├── ai/
+│   │   ├── generation.ts                # Single interface: local model OR external API, picked at runtime
+│   │   ├── providers/
+│   │   │   ├── localProvider.ts         # WebGPU/WASM path — only activates if device supports it
+│   │   │   └── remoteProvider.ts        # Thin fetch wrapper to an external image-gen API
+│   │   └── promptToEffects.ts           # Maps prompt text → FFmpeg filter params (pan/zoom/mood/pace)
+│   │
+│   ├── core/
+│   │   ├── ffmpegWorker.ts              # Wrapper class — bridges to the actual worker
+│   │   ├── imageProcessor.ts            # Canvas-based resize/normalize before FFmpeg
+│   │   ├── videoRenderer.ts             # Builds FFmpeg command graphs
+│   │   ├── effectsEngine.ts             # Prompt-driven filter graph builder
+│   │   └── memoryManager.ts             # FS cleanup, exit()/unlink(), heap monitoring
+│   │
+│   ├── workers/
+│   │   ├── ffmpeg.worker.ts             # Dedicated Worker owning the FFmpeg wasm instance
+│   │   └── textToImage.worker.ts        # Only spun up if localProvider is active
+│   │
+│   ├── store/
+│   │   ├── useAppStore.ts               # Images, prompt, render status (Zustand)
+│   │   └── useCapabilityStore.ts        # Device tier, WebGPU support, generation mode
+│   │
+│   ├── hooks/
+│   │   ├── useFFmpeg.ts
+│   │   ├── useGeneration.ts             # Calls ai/generation.ts, agnostic to local vs remote
+│   │   ├── useImageQueue.ts
+│   │   └── useDeviceCapabilities.ts     # Benchmarks/detects hardware, sets generation mode
+│   │
+│   ├── types/
+│   │   └── index.ts                     # RenderProgress, AppImage, GenerationSettings, EffectPreset
+│   │
+│   ├── utils/
+│   │   ├── modelCache.ts                # IndexedDB caching (only used if local model enabled)
+│   │   └── fileHelpers.ts
+│   │
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── index.html                           # Application entry point + COOP/COEP validation check
+├── package.json
+├── tsconfig.json
+├── .gitignore                           # Excludes node_modules, local weights, and generated ffmpeg assets
+└── vite.config.ts                       # COOP/COEP headers + worker plugin config
+```
 
 ---
 
