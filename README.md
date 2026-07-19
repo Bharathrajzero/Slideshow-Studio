@@ -227,7 +227,7 @@ Contributions are heavily encouraged! Whether you want to optimize the rendering
 
 ## Author
 
-* **Developer:** Bharath Raj
+* **Developer:** Bharath raj
 * **GitHub Profile:** [github.com/bharathrajzero](https://github.com/bharathrajzero)
   
 ---
