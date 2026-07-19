@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f8fafc;
+  }
+
+  body {
+    color: #0f172a;
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Premium Minimalist Input Skinning */
+  input[type="text"], 
+  input[type="number"], 
+  textarea, 
+  select {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-slate-950 placeholder-slate-400 transition-all outline-none;
+  }
+
+  /* Refined Focus States */
+  input[type="text"]:focus, 
+  input[type="number"]:focus, 
+  textarea:focus, 
+  select:focus {
+    @apply border-slate-400 ring-2 ring-slate-100 bg-slate-50/30;
+  }
+
+  /* Micro-interactions for buttons */
+  button {
+    @apply transition-all duration-150 active:scale-[0.98] active:brightness-95 disabled:pointer-events-none;
+  }
+
+  /* Modern Highlight Selection Tint */
+  ::selection {
+    background-color: rgba(15, 23, 42, 0.06);
+    color: #0f172a;
+  }
+
+  /* Elegant UI Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(15, 23, 42, 0.1) transparent;
+    box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.08);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 23, 42, 0.2);
+  }
+}
+
+@layer utilities {
+  .mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  /* Smooth Entrance for Compilation Toast */
+  .animate-fade-in {
+    animation: fadeInSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
