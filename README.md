@@ -22,7 +22,7 @@ Zero servers. Zero upload waits. Total privacy.
 ## Screenshots
 <img width="1920" height="1079" alt="81" src="https://github.com/user-attachments/assets/9b029849-dd6d-4879-843b-1943e4ffa76c" />
 <img width="1920" height="1079" alt="82" src="https://github.com/user-attachments/assets/21c6a9d2-cdda-41e4-aee1-7ca5d599378e" />
-https://github.com/user-attachments/assets/c2d33fb2-bb6a-4d03-b396-b3d9edf8f5b3
+<video src="https://github.com/user-attachments/assets/c2d33fb2-bb6a-4d03-b396-b3d9edf8f5b3" width="100%" controls></video>
 
 ---
 ## 📑 Table of Contents
